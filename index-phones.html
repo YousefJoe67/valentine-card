@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>For Salma 💙</title>
+
+<style>
+/* =========================
+   COLOR THEME (NAVY)
+   ========================= */
+:root {
+  --navy: #0f1b3d;
+  --navy-soft: #1b2a5a;
+  --accent: #5b7cfa;
+  --light: #f5f7ff;
+  --text: #e9ecff;
+}
+
+/* =========================
+   GLOBAL RESET
+   ========================= */
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #0f1b3d, #162456);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* =========================
+   CARD
+   ========================= */
+.card {
+  width: 95%;
+  max-width: 430px;
+  height: 92vh;
+  background: linear-gradient(180deg, #162456, #0f1b3d);
+  border-radius: 26px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================
+   SLIDES
+   ========================= */
+.slides {
+  flex: 1;
+  display: flex;
+  transition: transform 0.55s ease;
+}
+
+.slide {
+  min-width: 100%;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--text);
+}
+
+h2 {
+  margin-bottom: 18px;
+  font-weight: 600;
+}
+
+/* =========================
+   BUTTONS
+   ========================= */
+button {
+  border: none;
+  border-radius: 16px;
+  padding: 14px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.yes {
+  background: var(--accent);
+  color: white;
+}
+
+.no {
+  background: rgba(255,255,255,0.15);
+  color: var(--text);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px;
+  background: rgba(0,0,0,0.2);
+}
+
+.nav button {
+  background: rgba(255,255,255,0.15);
+  color: var(--text);
+}
+
+/* =========================
+   POPUP
+   ========================= */
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.popup-content {
+  background: linear-gradient(180deg, #1b2a5a, #0f1b3d);
+  padding: 26px;
+  border-radius: 20px;
+  text-align: center;
+  color: white;
+  max-width: 320px;
+}
+
+/* =========================
+   TIMER DESIGN
+   ========================= */
+.timer-box {
+  background: rgba(255,255,255,0.08);
+  padding: 22px;
+  border-radius: 20px;
+  width: 100%;
+}
+
+.start-date {
+  font-size: 14px;
+  opacity: 0.85;
+  margin-bottom: 14px;
+}
+
+.timer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.time-unit {
+  background: rgba(255,255,255,0.12);
+  border-radius: 14px;
+  padding: 12px;
+}
+
+.time-unit span {
+  font-size: 20px;
+  font-weight: 600;
+  display: block;
+}
+
+/* =========================
+   DISTANCE
+   ========================= */
+.distance {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.icon {
+  background: rgba(255,255,255,0.12);
+  padding: 16px;
+  border-radius: 16px;
+  font-weight: 600;
+}
+
+.line {
+  border-top: 2px dotted rgba(255,255,255,0.6);
+  width: 60px;
+}
+
+/* =========================
+   GALLERY
+   ========================= */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  width: 100%;
+}
+
+.gallery img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+/* =========================
+   GIFT & RESTART
+   ========================= */
+.gift {
+  font-size: 64px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.restart {
+  background: rgba(255,255,255,0.15);
+  color: white;
+}
+/* =========================
+   MAP / CONNECTION (SLIDE 3)
+   ========================= */
+
+.map {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  height: 160px;
+  margin-top: 20px;
+}
+
+.location {
+  position: absolute;
+  width: 100px;
+  text-align: center;
+}
+
+.location.left {
+  left: 0;
+}
+
+.location.right {
+  right: 0;
+}
+
+.pin {
+  font-size: 28px;
+  filter: drop-shadow(0 0 8px rgba(91,124,250,0.6));
+}
+
+.label {
+  background: rgba(255,255,255,0.12);
+  padding: 2px;
+  border-radius: 50px;
+  margin-top: 6px;
+  font-size: 14px;
+}
+
+.connection {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  width: 60px;
+  height: 3px;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255,255,255,0.8),
+    transparent
+  );
+}
+
+.connection span {
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,0.15);
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+</style>
+</head>
+
+<body>
+<div class="card">
+
+<div class="slides" id="slides">
+
+<!-- SLIDE 1 -->
+<div class="slide">
+  <h2>Will you be my Valentine? 💙</h2>
+  <div style="display:flex; gap:14px;">
+    <button class="yes" id="yesBtn">Yes</button>
+    <button class="no" id="noBtn">No</button>
+  </div>
+  <p id="noMessage" style="margin-top:14px; opacity:0.85;"></p>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide">
+  <h2>Our time together 💙</h2>
+  <div class="timer-box">
+    <div class="start-date">
+      Since 29 August 2025 — 11:13 PM
+    </div>
+    <div class="timer" id="timer"></div>
+  </div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide">
+  <h2>Two Places, One Heart</h2>
+
+  <div class="map">
+    <!-- Location: You -->
+    <div class="location left">
+      <div class="pin">📍</div>
+      <div class="label">
+        <strong>Yousef</strong><br>
+        Fayoum
+      </div>
+    </div>
+
+    <!-- Connection Line -->
+    <div class="connection">
+      <span>200KM ~ 3h:17min</span>
+    </div>
+
+    <!-- Location: Salma -->
+    <div class="location right">
+      <div class="pin">📍</div>
+      <div class="label">
+        <strong>Salma</strong><br>
+        Tanta
+      </div>
+    </div>
+  </div>
+
+  <p style="margin-top:16px; opacity:0.85;">
+    Interlinked For life 😝
+  </p>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide">
+  <h2>Some Memories 📸</h2>
+  <div class="gallery">
+    <!-- REPLACE THESE WITH YOUR OWN PHOTOS -->
+    <img src="images/photo1.jpg">
+    <img src="images/photo2.jpg">
+    <img src="images/photo3.jpg">
+    <img src="images/photo4.jpg">
+  </div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide">
+  <h2>For the Prettiest Eyes😘<br>open the gift!</h2>
+  <div class="gift" id="gift">🎁</div>
+  <button class="restart" id="restart">Restart</button>
+</div>
+
+</div>
+
+<div class="nav">
+  <button id="prev">Previous</button>
+  <button id="next">Next</button>
+</div>
+</div>
+
+<div class="popup" id="popup">
+  <div class="popup-content" id="popupText"></div>
+</div>
+
+<script>
+let currentSlide = 0;
+const slides = document.getElementById("slides");
+
+/* =========================
+   SLIDE NAVIGATION
+   ========================= */
+function updateSlide() {
+  slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+}
+
+next.onclick = () => {
+  if (currentSlide === 0) return;
+  if (currentSlide < 4) currentSlide++;
+  updateSlide();
+};
+
+prev.onclick = () => {
+  if (currentSlide > 0) currentSlide--;
+  updateSlide();
+};
+
+/* =========================
+   YES / NO LOGIC
+   ========================= */
+let yesScale = 1;
+let noScale = 1;
+let noCount = 0;
+
+const messages = [
+  "Are you sure? 🥺",
+  "طب وحياة شحيبر طيب",
+  "ما تقولي اه يا بت🔪",
+  "Say yes 😭"
+];
+
+noBtn.onclick = () => {
+  yesScale += 0.05;
+  noScale -= 0.05;
+  yesBtn.style.transform = `scale(${yesScale})`;
+  noBtn.style.transform = `scale(${noScale})`;
+  noMessage.textContent = messages[noCount++ % messages.length];
+};
+
+yesBtn.onclick = () => {
+  showPopup("Good girl 😍");
+  currentSlide = 1;
+  updateSlide();
+};
+
+/* =========================
+   TIMER
+   ========================= */
+const startDate = new Date(2025, 7, 29, 23, 13, 0);
+
+function updateTimer() {
+  const now = new Date();
+  let diff = Math.max(0, now - startDate);
+
+  const days = Math.floor(diff / 86400000);
+  const hours = Math.floor(diff / 3600000) % 24;
+  const minutes = Math.floor(diff / 60000) % 60;
+  const seconds = Math.floor(diff / 1000) % 60;
+
+  timer.innerHTML = `
+    <div class="time-unit"><span>${days}</span>Days</div>
+    <div class="time-unit"><span>${hours}</span>Hours</div>
+    <div class="time-unit"><span>${minutes}</span>Minutes</div>
+    <div class="time-unit"><span>${seconds}</span>Seconds</div>
+  `;
+}
+
+setInterval(updateTimer, 1000);
+updateTimer();
+
+/* =========================
+   POPUPS & RESTART
+   ========================= */
+function showPopup(text) {
+  popupText.innerHTML = text;
+  popup.style.display = "flex";
+  popup.onclick = () => popup.style.display = "none";
+}
+
+gift.onclick = () => {
+  showPopup("💋 Love you baby<br><br>I have a surprise for you 🎁");
+};
+
+restart.onclick = () => {
+  currentSlide = 0;
+  yesScale = 1;
+  noScale = 1;
+  yesBtn.style.transform = "scale(1)";
+  noBtn.style.transform = "scale(1)";
+  noMessage.textContent = "";
+  updateSlide();
+};
+</script>
+</body>
+</html>
